@@ -1,0 +1,11 @@
+/* styles.css */
+.image-grid {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr); /* Three columns */
+    gap: 10px; /* Gap between images */
+}
+
+.image-grid img {
+    max-width: 100%; /* Ensure images fit within their containers */
+    height: auto;
+}
