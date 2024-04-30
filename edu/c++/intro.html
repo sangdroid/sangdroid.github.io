@@ -2,6 +2,10 @@
 <html>
 <head>
     <title>Purpose driven life</title>
+	<a href="https://sangdroid.github.io/index.html">
+	<button >Go home</button>
+	</a>
+	<script src="action.js"></script>
 	<link rel="stylesheet" href="styles.css">
 	<meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,25 +17,64 @@
         }
     </style>
 </head>
-<body>
-    <h1>Re-born!</h1>
+
+<body >
+<div style="height:100%; position:absolute;">
+    
     <!-- Add more content here -->
 	<div class="decription">
-        <text>c++?</text>
     </div>
 	<div class="image-grid">
-        <img src="https://sangdroid.github.io/docs/image.jpg" alt="Image">
+        <img src="https://sangdroid.github.io/docs/image.jpg" alt="Sample Image">
     </div>
-	<div class="clock" id="myClock"></div>
-    <script>
-        function updateClock() {
-            const now = new Date();
-            const timeString = now.toLocaleTimeString();
-            document.getElementById('myClock').textContent = timeString;
-        }
+	<div class="bulletin">
+    <p>Important Announcement: next week! Don't miss out!</p>
+	</div>
 
-        // Update the clock every second
-        setInterval(updateClock, 1000);
-    </script>
+	<style>
+	<!-- not valid
+	.clock-container {
+		position: relative;
+		min-height: 100vh; /* This makes sure that the container stretches to the full height of the viewport */
+		align-items: flex-end;
+		
+	  }
+	  
+	   {
+		height: 100%;
+		margin: 0;
+		display: flex;
+		justify-content: center;
+		align-items: flex-end; /* Aligns the clock to the bottom */
+	  }-->
+	  .clock {
+		font-size: 48px; /* Adjust size as needed */
+		color: #00f; /* Clock text color */
+		background: #fff; /* Clock background color */
+		padding: 10px;
+		margin-bottom: 20px; /* Distance from the bottom */
+		bottom:0px;
+		height:10%;
+		position:absolute; 
+		
+	  }
+	</style>
+
+	<div class="clock" id="clock"></div>
+	<script>
+	  function updateClock() {
+		var now = new Date();
+		var hours = now.getHours();
+		var minutes = now.getMinutes();
+		var seconds = now.getSeconds();
+		document.getElementById('clock').textContent = 
+		  (hours < 10 ? '0' : '') + hours + ':' +
+		  (minutes < 10 ? '0' : '') + minutes + ':' +
+		  (seconds < 10 ? '0' : '') + seconds;
+	  }
+	  setInterval(updateClock, 1000);
+	  updateClock(); // Initial call to display the clock immediately
+	</script>
+</div>
 </body>
 </html>

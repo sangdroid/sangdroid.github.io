@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<script src="action.js"></script>
     <title>Purpose driven life</title>
 	<link rel="stylesheet" href="styles.css">
 	<meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
     <style>
         /* Add your CSS styles here */
         .clock {
@@ -12,28 +14,72 @@
             font-family: Arial, sans-serif;
         }
     </style>
+	<h1>Welcome!</h1>
+	<nav>
+    <div class="nav-left">
+        <a href="profile.html">Profile</a>
+        <a href="">Trends</a>
+        <a href="edu/c++/intro.html">Online</a>
+        <a href="">Service</a>
+        <a href="">Community</a>
+    </div>
+    <div class="nav-right">
+        <span>SPORTS</span>
+    </div>
+   </nav>
 </head>
 <body>
-    <h1>Re-born!</h1>
-    <!-- Add more content here -->
-	<div class="image-grid">
-        <img src="docs/image.jpg" alt="Image 1">
+<main >
+
+	<div class="search">
+        <form action="">
+            <input type="text" placeholder="Search with keywords">
+            <button onclick="greet()">Search</button>
+        </form>
     </div>
-	<div class="edu">
-	<a href="edu/c++/intro.html">c++</a>
+    <table>
+        <tr>
+            <th>Category</th>
+            <th>Title</th>
+            <th>Priority</th>
+            <th>Trending</th>
+        </tr>
+
+        <tr>
+            <td>Tech</td>
+            <td>Chat GPT</td>
+            <td>0 </td>
+            <td>30</td>
+        </tr>
+
+        <tr>
+            <td>Education</td>
+            <td>C++</td>
+            <td>1</td>
+            <td>30</td>
+        </tr>
+
+        <tr>
+            <td>Education</td>
+            <td>Python</td>
+            <td>2</td>
+            <td>30</td>
+        </tr>
+		<tr>
+            <td>Education</td>
+            <td>TestRail</td>
+            <td>3</td>
+            <td>10</td>
+        </tr>
+    </table>
+
+    <div class="page-btn">
+        <span class="num active">1</span>
+        <span class="num">2</span>
+    </div>
+	<div class="copyright">
+	<p style = "color:black">Copyright © 2024 [sangdroid]. All Rights Reserved.</p>
 	</div>
-
-	<div class="clock" id="myClock"></div>
-
-    <script>
-        function updateClock() {
-            const now = new Date();
-            const timeString = now.toLocaleTimeString();
-            document.getElementById('myClock').textContent = timeString;
-        }
-
-        // Update the clock every second
-        setInterval(updateClock, 1000);
-    </script>
+	</main>
 </body>
 </html>
