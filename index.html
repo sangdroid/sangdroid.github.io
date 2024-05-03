@@ -1,10 +1,14 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 	<script src="action.js"></script>
     <title>Purpose driven life</title>
+	<meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--<title>Document</title>-->
 	<link rel="stylesheet" href="https://sangdroid.github.io/styles.css">
-
+	
 	<h1>Welcome!</h1>
 	<nav>
     <div class="nav-left">
@@ -20,6 +24,29 @@
    </nav>
 </head>
 <body>
+<script language="JavaScript">
+        // 현재 날짜 객체를 생성하고 3개월 후로 설정하여 쿠키의 유효기간을 정함
+        expireDate = new Date;
+        expireDate.setMonth(expireDate.getMonth()+3);
+
+        // 'pageHit'라는 이름의 쿠키 값을 가져와서 방문 카운트로 사용
+        hitCt = eval(cookieVal("pageHit"));
+        hitCt++;
+
+        // 쿠키를 갱신하여 방문 카운트를 저장
+        document.cookie = "pageHit=" + hitCt + ";expires=" + expireDate.toGMTString();
+
+        // 쿠키에서 특정 이름을 가진 값을 찾는 함수
+        function cookieVal(cookieName) {
+            thisCookie = document.cookie.split("; ");
+            for (i=0; i<thisCookie.length; i++) {
+                if (cookieName == thisCookie[i].split("=")[0]) {
+                    return thisCookie[i].split("=")[1];
+                }
+            }
+            return 0;
+        }
+    </script>
 <main >
 
 	<div class="search">
@@ -67,10 +94,17 @@
     <div class="page-btn">
         <span class="num active">1</span>
         <span class="num">2</span>
-    </div>
+    </div>	
+	<div class="visit" id="visit"></div>
+	<h3 align=center>
+	<script language="javascript" type="text/javascript">
+		document.write("You are <font color=red>" + hitCt + "</font>th visitor!")
+	</script>
+	</h3>
 	<div class="copyright">
 	<p style = "color:black">Copyright © 2024 [sangdroid]. All Rights Reserved.</p>
 	</div>
 	</main>
+	
 </body>
 </html>
