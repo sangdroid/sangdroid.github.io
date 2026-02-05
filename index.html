@@ -185,10 +185,16 @@
             text-align: center;
             padding: 20px;
             font-size: 14px;
+            width: 100%;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            word-break: break-word;
         }
 
         footer p.copyright {
             color: #ffd700;
+            margin: 0;
+            padding: 10px 5px;
         }
 
         /* Responsive */
@@ -288,8 +294,14 @@
             }
 
             footer {
-                padding: 15px 10px;
-                font-size: 12px;
+                padding: 12px 8px;
+                font-size: 11px;
+                line-height: 1.6;
+            }
+
+            footer p.copyright {
+                padding: 8px 5px;
+                margin: 0;
             }
         }
     </style>

@@ -151,15 +151,23 @@ table tr td:nth-child(2) {
 	background: #fff; /* Clock background color */
 	padding: 10px;
 	margin-bottom: 20px; /* Distance from the bottom */
-	bottom:0px;
-	height:10%;
-	position:absolute; 
-	
+	bottom: 0px;
+	height: auto;
+	position: relative;
+	word-wrap: break-word;
+	overflow-wrap: break-word;
+	width: 100%;
 }
+
 .copyright {
-  position: relative;
-  left: 30%;
-  bottom: 0px;
+	position: relative;
+	left: 0;
+	bottom: 0px;
+	text-align: center;
+	word-wrap: break-word;
+	overflow-wrap: break-word;
+	padding: 10px 5px;
+	margin: 0;
 }
 
 /* Mobile Responsive Design */
@@ -217,6 +225,18 @@ table tr td:nth-child(2) {
 	.page-btn {
 		margin-top: 15px;
 	}
+
+	.clock {
+		font-size: 36px;
+		padding: 10px;
+		margin-bottom: 15px;
+	}
+
+	.copyright {
+		font-size: 12px;
+		padding: 10px 5px;
+		left: 0;
+	}
 }
 
 @media (max-width: 480px) {
@@ -273,5 +293,12 @@ table tr td:nth-child(2) {
 		font-size: 32px;
 		padding: 8px;
 		margin-bottom: 15px;
+		width: 100%;
+	}
+
+	.copyright {
+		font-size: 11px;
+		padding: 8px 5px;
+		left: 0;
 	}
 }
