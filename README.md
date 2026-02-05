@@ -1,4 +1,4 @@
-# sangdroid.github.io
+# sangdroid
 
 This repository contains the source for the personal website and portfolio for "Sangdroid". The site is a small static site (HTML, CSS, JavaScript) served via GitHub Pages.
 
