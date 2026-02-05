@@ -168,6 +168,9 @@ table tr td:nth-child(2) {
 	overflow-wrap: break-word;
 	padding: 10px 5px;
 	margin: 0;
+	font-size: 14px;
+	line-height: 1.5;
+	white-space: normal;
 }
 
 /* Mobile Responsive Design */
@@ -236,6 +239,8 @@ table tr td:nth-child(2) {
 		font-size: 12px;
 		padding: 10px 5px;
 		left: 0;
+		line-height: 1.5;
+		white-space: normal;
 	}
 }
 
@@ -298,7 +303,9 @@ table tr td:nth-child(2) {
 
 	.copyright {
 		font-size: 11px;
-		padding: 8px 5px;
+		padding: 8px 3px;
 		left: 0;
+		line-height: 1.4;
+		white-space: normal;
 	}
 }

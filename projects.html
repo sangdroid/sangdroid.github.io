@@ -136,18 +136,20 @@
             background: rgba(0, 0, 0, 0.3);
             color: rgba(255, 255, 255, 0.7);
             text-align: center;
-            padding: 20px;
+            padding: 20px 15px;
             font-size: 14px;
             width: 100%;
-            word-wrap: break-word;
             overflow-wrap: break-word;
-            word-break: break-word;
+            word-wrap: break-word;
+            white-space: normal;
         }
 
         footer p.copyright {
             color: #ffd700;
             margin: 0;
             padding: 10px 5px;
+            line-height: 1.5;
+            min-height: 1.5em;
         }
 
         @media (max-width: 768px) {
@@ -220,14 +222,16 @@
             }
 
             footer {
-                padding: 12px 8px;
-                font-size: 11px;
+                padding: 12px 10px;
+                font-size: 12px;
                 line-height: 1.6;
             }
 
             footer p.copyright {
-                padding: 8px 5px;
+                padding: 8px 3px;
                 margin: 0;
+                font-size: 11px;
+                line-height: 1.5;
             }
         }
     </style>
