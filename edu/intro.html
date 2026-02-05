@@ -147,9 +147,11 @@
         footer p.copyright {
             color: #ffd700;
             margin: 0;
-            padding: 10px 5px;
-            line-height: 1.5;
-            min-height: 1.5em;
+            padding: 8px 3px;
+            line-height: 1.4;
+            max-width: 100%;
+            display: block;
+            word-break: break-word;
         }
 
         @media (max-width: 768px) {
@@ -232,6 +234,19 @@
                 margin: 0;
                 font-size: 11px;
                 line-height: 1.5;
+            }
+        }
+
+        @media (max-width: 360px) {
+            footer {
+                padding: 10px 8px;
+                font-size: 11px;
+            }
+
+            footer p.copyright {
+                padding: 6px 2px;
+                font-size: 9.5px;
+                line-height: 1.3;
             }
         }
     </style>
