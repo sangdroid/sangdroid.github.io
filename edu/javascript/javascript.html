@@ -1,109 +1,203 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<script src="document.js"></script> 
-	<link rel="stylesheet" href="styles.css">
 	<meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<a href="https://sangdroid.github.io/index.html">
-	<button >Go home</button>
-	</a>
-<!--<head> 
-    <meta charset="utf-8"> 
-    <title>Text Editor</title> 
+	<title>JavaScript Learning - Text Editor</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+	<script src="document.js"></script>
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
 
-  
-    <!--Internal CSS start-->
-    <style> 
-        h1 { 
-            padding-top: 40px; 
-            padding-bottom: 40px; 
-            text-align: center; 
-            color: #957dad; 
-            font-family: 'Montserrat', sans-serif; 
-        } 
-          
-        section { 
-            padding: 5%; 
-            padding-top: 0; 
-            height: 100vh; 
-        } 
-          
-        .side { 
-            margin-left: 0; 
-        } 
-          
-        button { 
-            margin: 10px; 
-            border-color: #957dad !important; 
-            color: #888888 !important; 
-            margin-bottom: 25px; 
-        } 
-          
-        button:hover { 
-            background-color: #fec8d8 !important; 
-        } 
-          
-        textarea { 
-            padding: 3%; 
-            border-color: #957dad; 
-            border-width: thick; 
-        } 
-          
-        .flex-box { 
-            display: flex; 
-            justify-content: center; 
-        } 
-    </style> 
-    <!--Internal CSS End-->
-</head> 
-<!--Body start-->
-  
-<body> 
-    <section class=""> 
-        <h1 class="shadow-sm">TEXT EDITOR</h1> 
-        <div class="flex-box"> 
-            <div class="row"> 
-                <div class="col"> 
-                    <!-- Adding different buttons for 
-                         different functionality-->
-                    <!--onclick attribute is added to give  
-                        button a work to do when it is clicked-->
-                    <button type="button" 
-                            onclick="fontmod()" 
-                            class=" shadow-sm btn btn-outline-secondary" 
-                            data-toggle="tooltip"
-                            data-placement="top" 
-                            title="Update Text"> 
-            UpdateText</button> 
-                    
-                </div> 
-            </div> 
-        </div> 
-        <br> 
-        <div class="row"> 
-            <div class="col-md-3 col-sm-3"> 
-            </div> 
-            <div class="col-md-6 col-sm-9"> 
-                <div class="flex-box"> 
-                    <textarea id="textarea1" 
-                              class="input shadow" 
-                              name="name" 
-                              rows="15" 
-                              cols="100" 
-                              placeholder="Your text here "> 
-                    </textarea> 
-                </div> 
-            </div> 
-            <div class="col-md-3"> 
-            </div> 
-        </div> 
-    </section> 
-    <br> 
-    <br> 
-  
-    <!--External JavaScript file-->
-    
-</body> 
-  
+		body {
+			background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+			min-height: 100vh;
+		}
+
+		.header-nav {
+			position: sticky;
+			top: 0;
+			z-index: 100;
+			background: rgba(0, 0, 0, 0.3);
+			padding: 15px 20px;
+			margin-bottom: 20px;
+		}
+
+		.header-nav a button {
+			background: rgba(255, 255, 255, 0.2);
+			color: white;
+			border: 2px solid white;
+			padding: 10px 20px;
+			border-radius: 50px;
+			cursor: pointer;
+			font-weight: 600;
+			transition: all 0.3s ease;
+			text-decoration: none;
+		}
+
+		.header-nav a button:hover {
+			background: white;
+			color: #667eea;
+			transform: translateY(-3px);
+		}
+
+		h1 {
+			padding: 30px 20px;
+			text-align: center;
+			color: white;
+			font-family: 'Montserrat', sans-serif;
+			font-size: 2.5rem;
+			text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+		}
+
+		section {
+			padding: 20px;
+			min-height: calc(100vh - 200px);
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+		}
+
+		.flex-box {
+			display: flex;
+			justify-content: center;
+			flex-wrap: wrap;
+			width: 100%;
+			gap: 10px;
+		}
+
+		button {
+			margin: 10px;
+			border-color: #957dad !important;
+			color: white !important;
+			background-color: rgba(255, 255, 255, 0.1) !important;
+			margin-bottom: 25px;
+			padding: 10px 20px;
+			border-radius: 5px;
+			font-weight: 600;
+			transition: all 0.3s ease;
+		}
+
+		button:hover {
+			background-color: #fec8d8 !important;
+			color: #333 !important;
+		}
+
+		.textarea-container {
+			width: 100%;
+			max-width: 900px;
+			display: flex;
+			justify-content: center;
+		}
+
+		textarea {
+			width: 100%;
+			max-width: 100%;
+			padding: 15px;
+			border-color: #957dad;
+			border: 2px solid #957dad;
+			border-radius: 5px;
+			font-family: 'Courier New', monospace;
+			font-size: 14px;
+			resize: vertical;
+			min-height: 300px;
+			background: white;
+			color: #333;
+		}
+
+		@media (max-width: 768px) {
+			h1 {
+				padding: 20px 15px;
+				font-size: 2rem;
+			}
+
+			section {
+				padding: 15px;
+			}
+
+			textarea {
+				min-height: 250px;
+				font-size: 13px;
+				padding: 10px;
+			}
+
+			button {
+				font-size: 12px;
+				padding: 8px 15px;
+				margin: 5px;
+			}
+		}
+
+		@media (max-width: 480px) {
+			h1 {
+				padding: 15px 10px;
+				font-size: 1.5rem;
+			}
+
+			section {
+				padding: 10px;
+			}
+
+			.header-nav {
+				padding: 10px;
+			}
+
+			.header-nav a button {
+				padding: 8px 15px;
+				font-size: 12px;
+			}
+
+			textarea {
+				min-height: 200px;
+				font-size: 12px;
+				padding: 8px;
+			}
+
+			button {
+				font-size: 11px;
+				padding: 6px 12px;
+				margin: 3px;
+			}
+
+			.textarea-container {
+				max-width: 100%;
+			}
+		}
+	</style>
+</head>
+<body>
+	<div class="header-nav">
+		<a href="https://sangdroid.github.io/index.html">
+			<button>← Go Home</button>
+		</a>
+	</div>
+
+	<h1 class="shadow-sm">TEXT EDITOR</h1>
+
+	<section>
+		<div class="flex-box">
+			<button type="button" 
+					onclick="fontmod()" 
+					class="shadow-sm"
+					title="Update Text">
+				Update Text
+			</button>
+		</div>
+		<br>
+		<div class="textarea-container">
+			<textarea id="textarea1"
+					  class="shadow"
+					  name="name"
+					  placeholder="Your text here">
+			</textarea>
+		</div>
+	</section>
+
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
 </html>

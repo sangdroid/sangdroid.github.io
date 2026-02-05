@@ -213,14 +213,83 @@
                 font-size: 1.2rem;
             }
 
+            .intro-container .description {
+                font-size: 1rem;
+            }
+
             .cta-buttons {
                 flex-direction: column;
                 align-items: center;
+                gap: 15px;
             }
 
             .btn {
                 width: 100%;
                 max-width: 300px;
+                padding: 12px 30px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            nav {
+                padding: 12px 15px;
+                gap: 10px;
+            }
+
+            .nav-left {
+                gap: 15px;
+                flex-direction: column;
+            }
+
+            .nav-left a {
+                font-size: 14px;
+                margin-right: 0;
+                padding: 8px;
+            }
+
+            .nav-right {
+                font-size: 14px;
+                letter-spacing: 1px;
+            }
+
+            main {
+                padding: 30px 15px;
+            }
+
+            .intro-container h1 {
+                font-size: 1.8rem;
+                margin-bottom: 15px;
+            }
+
+            .intro-container .subtitle {
+                font-size: 1rem;
+                margin-bottom: 20px;
+            }
+
+            .intro-container .description {
+                font-size: 0.95rem;
+                margin-bottom: 30px;
+                line-height: 1.6;
+            }
+
+            .cta-buttons {
+                gap: 12px;
+            }
+
+            .btn {
+                padding: 11px 25px;
+                font-size: 14px;
+                max-width: 100%;
+            }
+
+            .scroll-indicator {
+                bottom: 20px;
+                font-size: 14px;
+            }
+
+            footer {
+                padding: 15px 10px;
+                font-size: 12px;
             }
         }
     </style>

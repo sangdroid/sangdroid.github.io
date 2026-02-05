@@ -135,6 +135,8 @@
         @media (max-width: 768px) {
             nav {
                 padding: 15px 20px;
+                flex-wrap: wrap;
+                gap: 10px;
             }
 
             .coming-soon-container h1 {
@@ -143,6 +145,60 @@
 
             .coming-soon-container .page-title {
                 font-size: 1.5rem;
+            }
+
+            .coming-soon-container .description {
+                font-size: 1rem;
+            }
+
+            main {
+                padding: 30px 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            nav {
+                padding: 12px 15px;
+            }
+
+            .nav-left a {
+                font-size: 14px;
+                margin-right: 20px;
+            }
+
+            .nav-right {
+                font-size: 12px;
+                letter-spacing: 1px;
+            }
+
+            .coming-soon-container h1 {
+                font-size: 1.8rem;
+                margin-bottom: 15px;
+            }
+
+            .coming-soon-container .page-title {
+                font-size: 1.2rem;
+                margin-bottom: 20px;
+            }
+
+            .coming-soon-container .description {
+                font-size: 0.95rem;
+                margin-bottom: 30px;
+            }
+
+            .loading-dots {
+                font-size: 1.5rem;
+                letter-spacing: 4px;
+            }
+
+            main {
+                padding: 20px 10px;
+            }
+
+            .back-link {
+                padding: 10px 20px;
+                font-size: 14px;
+                margin-top: 20px;
             }
         }
     </style>
