@@ -1,0 +1,149 @@
+/* styles.css */
+header {
+	text-align: center;
+	width: 1200px;
+	margin: 30px auto;
+	margin-bottom: 20px;
+}
+
+header h1 {
+	margin-bottom: 15px;
+}
+.image-grid {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr); /* Three columns */
+    gap: 10px; /* Gap between images */
+}
+
+.image-grid img {
+    max-width: 100%; /* Ensure images fit within their containers */
+    height: auto;
+}
+
+hr {
+	border: 1px solid #dfdbdb;
+}
+
+nav {
+	width: 1200px;
+	display: flex;
+	justify-content: space-between;
+	margin: 0 auto;
+	padding: 20px 0;
+}
+
+.nav-left a {
+	font-weight: bold;
+	font-size: 18px;
+	margin-right: 50px;
+}
+
+.nav-left a:last-child {
+	margin-right: 0px;
+}
+
+.nav-right span {
+	font-weight: bold;
+	font-size: 18px;
+	color: #566cf3;
+}
+main {
+	width: 1200px;
+	margin: 0 auto;
+}
+
+.search {
+	display: flex;
+	justify-content: right;
+	margin-bottom: 20px;
+}
+
+p {
+	font-family:courier;
+	color: blue;
+}
+
+table {
+	width: 100%;
+	font-size: 20px;
+	border-collapse: collapse;
+}
+
+table tr {
+	height: 14px;
+}
+
+table tr:nth-child(1) {
+	background-color: #dee;
+}
+
+table tr th, table tr td {
+	text-align: center;
+	font-size: 14px;
+	border: 1px solid #ccc;
+}
+
+table tr td:nth-child(2) {
+	text-align: center;
+	padding-left: 10px;
+}
+
+.page-btn {
+	display: flex;
+	justify-content: center;
+	margin-top: 20px;
+}
+
+.page-btn span {
+	margin-right: 5px;
+	cursor: pointer;
+	margin-top: 10px;
+}
+
+.page-btn span:last-child {
+	margin-right: 0;
+}
+
+.num {
+	width: 30px;
+	height: 30px;
+	border-radius: 50%;
+	font-size: 14px;
+	display: inline-block;
+	color: black;
+	text-align: center;
+	line-height: 30px;
+	border: 1px solid #ccc;
+}
+
+.active {
+	background-color: rgb(216, 216, 247);
+	color: white;
+}
+
+.bulletin {
+	background-color: #f8f8f8;
+	padding: 10px;
+	text-align: center;
+	font-size: 16px;
+	font-weight: bold;
+	color: #333;
+}
+
+.clock {
+	font-size: 48px; /* Adjust size as needed */
+	color: #00f; /* Clock text color */
+	background: #fff; /* Clock background color */
+	padding: 10px;
+	margin-bottom: 20px; /* Distance from the bottom */
+	bottom:0px;
+	height:10%;
+	position:absolute; 
+	
+}
+.copyright {
+  position: relative;
+  left: 30%;
+  bottom: 0px;
+}
+  
