@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Automated Assembly and Inspection Systems</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: white;
+            display: flex;
+            flex-direction: column;
+        }
+
+        nav {
+            background: rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+            padding: 20px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+
+        .nav-left {
+            display: flex;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .nav-left a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border-bottom: 2px solid transparent;
+        }
+
+        .nav-left a:hover {
+            border-bottom: 2px solid white;
+            color: #ffd700;
+        }
+
+        .nav-right {
+            color: white;
+            font-size: 16px;
+            font-weight: 600;
+            letter-spacing: 2px;
+        }
+
+        main {
+            flex: 1;
+            width: 100%;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 50px 20px;
+        }
+
+        .hero,
+        .section-card,
+        .image-card {
+            background: rgba(0, 0, 0, 0.22);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            border-radius: 18px;
+            padding: 28px;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .hero {
+            margin-bottom: 24px;
+        }
+
+        h1 {
+            font-size: 2.8rem;
+            margin-bottom: 12px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25);
+        }
+
+        .subtitle {
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.88);
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+
+        .tag-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 12px;
+        }
+
+        .tag {
+            padding: 8px 14px;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.16);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            font-size: 0.92rem;
+        }
+
+        .actions {
+            display: flex;
+            gap: 14px;
+            flex-wrap: wrap;
+            margin-top: 22px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            border-radius: 999px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background: white;
+            color: #667eea;
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.12);
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .image-card {
+            margin-bottom: 24px;
+        }
+
+        .image-card img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 12px;
+            margin-bottom: 14px;
+        }
+
+        .image-card p {
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.6;
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 20px;
+            margin-bottom: 24px;
+        }
+
+        .section-card h2 {
+            font-size: 1.25rem;
+            margin-bottom: 12px;
+            color: #ffd700;
+        }
+
+        .section-card p,
+        .section-card li {
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.7;
+        }
+
+        .section-card ul {
+            padding-left: 20px;
+        }
+
+        footer {
+            background: rgba(0, 0, 0, 0.3);
+            color: rgba(255, 255, 255, 0.75);
+            text-align: center;
+            padding: 18px 12px;
+            font-size: 14px;
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                padding: 15px 20px;
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            h1 {
+                font-size: 2.1rem;
+            }
+
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
+
+            main {
+                padding: 30px 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero,
+            .section-card,
+            .image-card {
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 1.8rem;
+            }
+
+            .subtitle {
+                font-size: 1rem;
+            }
+
+            .nav-left a,
+            .nav-right {
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-left">
+            <a href="index.html">Home</a>
+            <a href="projects.html">Projects</a>
+        </div>
+        <div class="nav-right">
+            <span>SANGDROID</span>
+        </div>
+    </nav>
+
+    <main>
+        <section class="hero">
+            <h1>Automated Assembly and Inspection Systems</h1>
+            <p class="subtitle">
+                Factory automation work centered on improving assembly flow, product quality checks,
+                and reliable equipment coordination in production environments.
+            </p>
+            <div class="tag-row">
+                <span class="tag">Factory Automation</span>
+                <span class="tag">Inspection Systems</span>
+                <span class="tag">Process Optimization</span>
+                <span class="tag">Production Integration</span>
+            </div>
+            <div class="actions">
+                <a href="projects.html" class="btn btn-primary">← Back to Projects</a>
+                <a href="index.html" class="btn btn-secondary">Home</a>
+            </div>
+        </section>
+
+        <section class="image-card">
+            <img src="docs/images/2026-03-16 072143.png" alt="Automated assembly and inspection system scene">
+            <p>
+                Example production scene showing an automotive-style assembly line environment relevant to
+                coordinated manufacturing, in-line inspection, and end-to-end automation workflows.
+            </p>
+        </section>
+
+        <section class="content-grid">
+            <div class="section-card">
+                <h2>System Focus</h2>
+                <ul>
+                    <li>Automated assembly line flow and station coordination</li>
+                    <li>Inspection checkpoints for quality and repeatability</li>
+                    <li>Equipment integration to support stable throughput</li>
+                </ul>
+            </div>
+
+            <div class="section-card">
+                <h2>Engineering Value</h2>
+                <ul>
+                    <li>Reduced manual handling and process variation</li>
+                    <li>Improved consistency in product inspection results</li>
+                    <li>Supported more efficient production monitoring and control</li>
+                </ul>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Practical automation experience across manufacturing and system integration.</p>
+    </footer>
+    <script src="visitor-checker.js"></script>
+</body>
+</html>
