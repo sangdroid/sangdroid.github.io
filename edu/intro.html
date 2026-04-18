@@ -102,6 +102,17 @@
             text-align: center;
         }
 
+        .learning-container .description a {
+            color: #ffd700;
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        .learning-container .description a:hover {
+            color: #ffffff;
+            text-decoration: underline;
+        }
+
         .category-grid {
             display: grid;
             grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -127,6 +138,17 @@
             padding-left: 18px;
             color: rgba(255, 255, 255, 0.9);
             line-height: 1.7;
+        }
+
+        .category-card a {
+            color: #ffd700;
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        .category-card a:hover {
+            color: #ffffff;
+            text-decoration: underline;
         }
 
         .actions {
@@ -263,7 +285,7 @@
         <div class="learning-container">
             <h1>Learning Focus</h1>
             <p class="page-title">Education & Learning</p>
-            <p class="description">A categorized view of my current learning journey with emphasis on Cyber security and Reinforcement learning.</p>
+            <p class="description">A categorized view of my current learning journey with emphasis on Cyber security, Reinforcement learning, and Isaac Sim based robotics simulation.</p>
 
             <div class="category-grid">
                 <div class="category-card">
@@ -280,6 +302,7 @@
                         <li>Markov decision process basics</li>
                         <li>Q-learning and policy optimization</li>
                         <li>Robotics-oriented RL experiments</li>
+                        <li><a href="../isaac-sim.html">Isaac Sim integration</a> for training and testing scenarios</li>
                     </ul>
                 </div>
                 <div class="category-card">
@@ -291,11 +314,12 @@
                     </ul>
                 </div>
                 <div class="category-card">
-                    <h2>Automation & Vision</h2>
+                    <h2>Automation, Vision & Simulation</h2>
                     <ul>
                         <li>Inspection and assembly automation</li>
                         <li>Machine vision calibration</li>
                         <li>Industrial process optimization</li>
+                        <li>Isaac Sim workflows for robotics validation</li>
                     </ul>
                 </div>
             </div>
@@ -305,5 +329,6 @@
             </div>
         </div>
     </main>
+    <script src="../visitor-checker.js"></script>
 </body>
 </html>
