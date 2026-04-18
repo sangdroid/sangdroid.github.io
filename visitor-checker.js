@@ -26,13 +26,18 @@
     }
 
     async function loadVisitors() {
+        const targets = document.querySelectorAll("[data-visitor-total]");
+        if (!targets.length) {
+            return;
+        }
+
         try {
             const totalCount = await hitCounter("site-total");
 
             updateText("[data-visitor-total]", totalCount.toLocaleString());
             console.log("Visitor checker", { totalCount });
         } catch (error) {
-            updateText("[data-visitor-total]", "N/A");
+            updateText("[data-visitor-total]", "Unavailable");
             console.warn("Visitor checker unavailable", error);
         }
     }
