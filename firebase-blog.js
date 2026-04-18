@@ -9,6 +9,8 @@
     const logoutButton = document.querySelector("[data-logout]");
     let currentUser = null;
     let cachedPosts = [];
+    let idleTimer = null;
+    const idleLimitMs = 15 * 60 * 1000;
 
     const demoPosts = [];
 
@@ -115,6 +117,41 @@
         return !!user;
     }
 
+    function clearIdleTimer() {
+        if (idleTimer) {
+            window.clearTimeout(idleTimer);
+            idleTimer = null;
+        }
+    }
+
+    function startIdleTimer() {
+        clearIdleTimer();
+
+        if (!currentUser) {
+            return;
+        }
+
+        idleTimer = window.setTimeout(async () => {
+            try {
+                await auth.signOut();
+                setStatus("Signed out after inactivity.", false);
+            } catch (error) {
+                console.error(error);
+                setStatus("Auto sign-out failed.", true);
+            }
+        }, idleLimitMs);
+    }
+
+    function bindActivityTracking() {
+        ["click", "keydown", "mousemove", "scroll", "touchstart"].forEach((eventName) => {
+            document.addEventListener(eventName, () => {
+                if (currentUser) {
+                    startIdleTimer();
+                }
+            }, { passive: true });
+        });
+    }
+
     function subscribeToPosts() {
         if (unsubscribe) {
             unsubscribe();
@@ -133,12 +170,15 @@
     }
 
     subscribeToPosts();
+    bindActivityTracking();
 
     auth.onAuthStateChanged((user) => {
         currentUser = user;
         renderPosts(cachedPosts);
 
         if (canEdit(user)) {
+            startIdleTimer();
+
             if (loginPanel) {
                 loginPanel.hidden = true;
             }
@@ -148,9 +188,11 @@
             if (userState) {
                 userState.textContent = `Signed in as ${user.email}`;
             }
-            setStatus("You are signed in and ready to publish.", false);
+            setStatus("You are signed in and ready to publish. Auto sign-out runs after 15 minutes of inactivity.", false);
             return;
         }
+
+        clearIdleTimer();
 
         if (loginPanel) {
             loginPanel.hidden = false;
@@ -172,6 +214,7 @@
 
             try {
                 setStatus("Signing in...", false);
+                await auth.setPersistence(firebase.auth.Auth.Persistence.SESSION);
                 await auth.signInWithEmailAndPassword(email, password);
                 loginForm.reset();
             } catch (error) {
