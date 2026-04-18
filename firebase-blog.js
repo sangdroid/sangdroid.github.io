@@ -7,16 +7,10 @@
     const postForm = document.querySelector("[data-post-form]");
     const userState = document.querySelector("[data-user-state]");
     const logoutButton = document.querySelector("[data-logout]");
+    let currentUser = null;
+    let cachedPosts = [];
 
-    const demoPosts = [
-        {
-            category: "How-To Paper",
-            title: "Welcome to the Firebase Study Board",
-            summary: "Once Firebase is connected, new posts that you publish from this page will appear here automatically.",
-            content: "This starter board already supports sign-in, article publishing, and live post loading from Firestore.",
-            createdAt: new Date()
-        }
-    ];
+    const demoPosts = [];
 
     function setStatus(message, isError) {
         if (!statusElement) {
@@ -73,6 +67,9 @@
             const summary = escapeHtml(post.summary || "");
             const content = escapeHtml(post.content || "").replace(/\n/g, "<br>");
             const date = escapeHtml(formatDate(post.createdAt));
+            const deleteButton = currentUser && post.id
+                ? `<div class="post-actions"><button type="button" class="btn btn-danger" data-delete-id="${escapeHtml(post.id)}">Delete Post</button></div>`
+                : "";
 
             return `
                 <article class="post-card">
@@ -80,6 +77,7 @@
                     <h2>${title}</h2>
                     <p>${summary}</p>
                     ${content ? `<div class="post-content">${content}</div>` : ""}
+                    ${deleteButton}
                 </article>
             `;
         }).join("");
@@ -124,6 +122,7 @@
 
         unsubscribe = db.collection("posts").orderBy("createdAt", "desc").onSnapshot((snapshot) => {
             const posts = snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
+            cachedPosts = posts;
             renderPosts(posts);
             setStatus(posts.length ? "Posts loaded successfully." : "You are connected and ready to publish your first post.", false);
         }, (error) => {
@@ -136,6 +135,9 @@
     subscribeToPosts();
 
     auth.onAuthStateChanged((user) => {
+        currentUser = user;
+        renderPosts(cachedPosts);
+
         if (canEdit(user)) {
             if (loginPanel) {
                 loginPanel.hidden = true;
@@ -183,6 +185,39 @@
         logoutButton.addEventListener("click", async () => {
             await auth.signOut();
             setStatus("Signed out.", false);
+        });
+    }
+
+    if (postsElement) {
+        postsElement.addEventListener("click", async (event) => {
+            const button = event.target.closest("[data-delete-id]");
+            if (!button) {
+                return;
+            }
+
+            const postId = button.getAttribute("data-delete-id");
+            if (!postId) {
+                return;
+            }
+
+            if (!currentUser) {
+                setStatus("Sign in to delete posts.", true);
+                return;
+            }
+
+            const confirmed = window.confirm("Delete this post?");
+            if (!confirmed) {
+                return;
+            }
+
+            try {
+                setStatus("Deleting post...", false);
+                await db.collection("posts").doc(postId).delete();
+                setStatus("Post deleted successfully.", false);
+            } catch (error) {
+                console.error(error);
+                setStatus(error.message, true);
+            }
         });
     }
 
