@@ -95,7 +95,7 @@
 
     if (typeof firebase === "undefined" || !isConfigured(config)) {
         renderPosts(demoPosts);
-        setStatus("Demo mode is active. Add your Firebase project values to firebase-config.js to enable live posting.", false);
+        setStatus("Preview mode is active. Add your blog settings to enable live posting.", false);
         if (loginPanel) {
             loginPanel.hidden = false;
         }
@@ -103,7 +103,7 @@
             editorPanel.hidden = true;
         }
         if (userState) {
-            userState.textContent = "Firebase is not connected yet.";
+            userState.textContent = "Preview mode is active.";
         }
         return;
     }
@@ -113,8 +113,8 @@
     const db = firebase.firestore();
     let unsubscribe;
 
-    function isAdmin(user) {
-        return !!user && (!config.adminEmail || user.email === config.adminEmail);
+    function canEdit(user) {
+        return !!user;
     }
 
     function subscribeToPosts() {
@@ -125,18 +125,18 @@
         unsubscribe = db.collection("posts").orderBy("createdAt", "desc").onSnapshot((snapshot) => {
             const posts = snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
             renderPosts(posts);
-            setStatus(posts.length ? "Live posts loaded from Firebase." : "Connected to Firebase. Publish your first post.", false);
+            setStatus(posts.length ? "Posts loaded successfully." : "You are connected and ready to publish your first post.", false);
         }, (error) => {
             console.error(error);
             renderPosts(demoPosts);
-            setStatus("Firebase connected, but posts could not be loaded. Check Firestore rules.", true);
+            setStatus("Posts could not be loaded. Check your Firestore settings.", true);
         });
     }
 
     subscribeToPosts();
 
     auth.onAuthStateChanged((user) => {
-        if (isAdmin(user)) {
+        if (canEdit(user)) {
             if (loginPanel) {
                 loginPanel.hidden = true;
             }
@@ -146,7 +146,7 @@
             if (userState) {
                 userState.textContent = `Signed in as ${user.email}`;
             }
-            setStatus("You are signed in and can publish posts.", false);
+            setStatus("You are signed in and ready to publish.", false);
             return;
         }
 
@@ -158,7 +158,7 @@
         }
 
         if (userState) {
-            userState.textContent = user ? `Signed in as ${user.email} (read-only)` : "Sign in to publish posts.";
+            userState.textContent = "Sign in to publish posts.";
         }
     });
 

@@ -85,6 +85,13 @@
             color: rgba(255, 255, 255, 0.88);
         }
 
+        .section-title {
+            font-size: 1.5rem;
+            margin-top: 10px;
+            margin-bottom: 6px;
+            color: #ffffff;
+        }
+
         .status-box {
             background: rgba(0, 0, 0, 0.22);
             border: 1px solid rgba(255, 255, 255, 0.18);
@@ -287,10 +294,10 @@
 
     <main>
         <section class="hero">
-            <h1>Study Board & Blog</h1>
+            <h1>Tech Blog & How-To Papers</h1>
             <p class="subtitle">
-                This board is ready for Firebase-backed posts, so you can sign in, write articles, publish how-to papers,
-                and keep a live stream of tech notes and study updates.
+                A clean space for study notes, practical guides, project updates, and tech news.
+                Sign in whenever you want to publish a new article.
             </p>
             <div class="actions">
                 <a href="index.html" class="btn btn-primary">← Back to Home</a>
@@ -298,14 +305,14 @@
             </div>
         </section>
 
-        <div class="status-box" data-blog-status>Initializing Firebase study board...</div>
+        <div class="status-box" data-blog-status>Loading blog posts...</div>
         <p class="muted" data-user-state>Sign in to publish posts.</p>
 
         <section class="panel-grid">
             <article class="post-card" data-login-panel>
-                <div class="meta">Admin Sign In</div>
-                <h2>Publish from anywhere</h2>
-                <p class="muted">Use your Firebase email/password account to add or update posts from this page.</p>
+                <div class="meta">Writer Sign In</div>
+                <h2>Post to your blog</h2>
+                <p class="muted">Sign in to write articles, study notes, and how-to papers from this page.</p>
                 <form class="form-stack" data-login-form>
                     <label>
                         Email
@@ -322,9 +329,9 @@
             </article>
 
             <article class="post-card" data-editor-panel hidden>
-                <div class="meta">Create New Post</div>
-                <h2>Write an article</h2>
-                <p class="muted">Publish study notes, how-to papers, technical updates, and project logs.</p>
+                <div class="meta">New Article</div>
+                <h2>Write a post</h2>
+                <p class="muted">Publish a how-to paper, study log, technical update, or project note.</p>
                 <form class="form-stack" data-post-form>
                     <label>
                         Title
@@ -350,17 +357,27 @@
             </article>
         </section>
 
+        <section class="post-card">
+            <div class="meta">How-To Papers</div>
+            <h2 class="section-title">Suggested writing topics</h2>
+            <ul>
+                <li>Isaac Sim environment setup guide</li>
+                <li>Machine vision calibration checklist</li>
+                <li>Factory automation troubleshooting notes</li>
+                <li>ROS and robotics workflow tips</li>
+            </ul>
+        </section>
+
         <section class="post-grid" data-post-list>
             <article class="post-card">
                 <div class="meta">Loading</div>
-                <h2>Connecting to Firebase</h2>
-                <p>Your live posts will appear here once the connection is ready.</p>
+                <h2>Loading recent posts</h2>
+                <p>Your published blog articles will appear here.</p>
             </article>
         </section>
 
         <div class="tip-box">
-            To activate live posting, add your Firebase project details in firebase-config.js, enable Email/Password sign-in,
-            and create a Firestore collection named posts.
+            Use this page for how-to papers, setup guides, technical summaries, project lessons learned, and study updates.
         </div>
     </main>
 

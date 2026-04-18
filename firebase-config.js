@@ -1,9 +1,8 @@
 window.firebaseBlogConfig = window.firebaseBlogConfig || {
-    apiKey: "YOUR_API_KEY",
-    authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
-    projectId: "YOUR_PROJECT_ID",
-    storageBucket: "YOUR_PROJECT_ID.firebasestorage.app",
-    messagingSenderId: "YOUR_SENDER_ID",
-    appId: "YOUR_APP_ID",
-    adminEmail: "you@example.com"
+    apiKey: "AIzaSyD34z5VINFf9DxglrjiR1iLzTIQQt2j2QI",
+    authDomain: "sangdroid-blog.firebaseapp.com",
+    projectId: "sangdroid-blog",
+    storageBucket: "sangdroid-blog.firebasestorage.app",
+    messagingSenderId: "463276680650",
+    appId: "1:463276680650:web:d48be8090561ac86d11b33"
 };
