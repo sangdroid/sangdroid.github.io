@@ -61,7 +61,7 @@
         main {
             flex: 1;
             width: 100%;
-            max-width: 1100px;
+            max-width: 1400px;
             margin: 0 auto;
             padding: 50px 20px;
         }
@@ -106,6 +106,10 @@
             grid-template-columns: repeat(2, minmax(0, 1fr));
             gap: 20px;
             margin-bottom: 24px;
+        }
+
+        [data-editor-panel] {
+            grid-column: 1 / -1;
         }
 
         .form-stack {
@@ -183,6 +187,110 @@
             margin-top: 12px;
             padding-top: 12px;
             border-top: 1px solid rgba(255, 255, 255, 0.14);
+        }
+
+        .post-attachments {
+            margin-top: 14px;
+            padding-top: 12px;
+            border-top: 1px solid rgba(255, 255, 255, 0.14);
+        }
+
+        .attachment-list {
+            display: grid;
+            gap: 12px;
+            margin-top: 12px;
+        }
+
+        .attachment-item {
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 12px;
+            padding: 12px;
+        }
+
+        .post-image {
+            display: block;
+            max-width: 100%;
+            width: auto;
+            height: auto;
+            max-height: 720px;
+            object-fit: contain;
+            border-radius: 10px;
+            margin-bottom: 10px;
+        }
+
+        .form-hint {
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.74);
+        }
+
+        .content-editor {
+            min-height: 420px;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            padding: 12px 14px;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            line-height: 1.7;
+        }
+
+        .content-editor:focus {
+            outline: 2px solid rgba(255, 255, 255, 0.28);
+            outline-offset: 2px;
+        }
+
+        .content-editor:empty::before {
+            content: attr(data-placeholder);
+            color: rgba(255, 255, 255, 0.65);
+        }
+
+        .content-editor p {
+            margin-bottom: 10px;
+        }
+
+        .content-editor a {
+            color: #ffd700;
+        }
+
+        .content-editor img {
+            cursor: pointer;
+        }
+
+        .content-editor img.is-selected {
+            outline: 3px solid rgba(255, 215, 0, 0.7);
+            outline-offset: 3px;
+        }
+
+        .editor-toolbar {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-top: 8px;
+        }
+
+        .toolbar-btn {
+            padding: 8px 12px;
+            border-radius: 999px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.08);
+            color: white;
+            cursor: pointer;
+        }
+
+        .toolbar-btn:hover {
+            background: rgba(255, 255, 255, 0.16);
+        }
+
+        .post-image[data-image-size="small"] {
+            max-width: 220px;
+        }
+
+        .post-image[data-image-size="medium"] {
+            max-width: 420px;
+        }
+
+        .post-image[data-image-size="large"] {
+            max-width: 100%;
         }
 
         .post-actions {
@@ -364,10 +472,25 @@
                     </label>
                     <label>
                         Full content
-                        <textarea name="content" rows="6" placeholder="Write your article here"></textarea>
+                        <div class="content-editor" data-content-editor contenteditable="true" data-placeholder="Write your article here and paste images directly into the editor."></div>
+                        <div class="editor-toolbar" data-image-size-toolbar hidden>
+                            <button type="button" class="toolbar-btn" data-image-size="small">Small</button>
+                            <button type="button" class="toolbar-btn" data-image-size="medium">Medium</button>
+                            <button type="button" class="toolbar-btn" data-image-size="large">Full Width</button>
+                            <button type="button" class="toolbar-btn" data-image-size="original">Original</button>
+                        </div>
+                        <span class="form-hint">Click an inline image to resize it while writing.</span>
+                        <textarea name="content" rows="6" hidden></textarea>
                     </label>
+                    <label>
+                        Image or file attachments
+                        <input type="file" name="attachments" multiple accept="image/*,.pdf,.txt,.md,.doc,.docx,.ppt,.pptx,.xls,.xlsx,.zip">
+                        <span class="form-hint">Paste or choose images and they will appear directly in the article editor.</span>
+                    </label>
+                    <div class="form-hint" data-attachment-status>No attachments selected.</div>
                     <div class="actions">
-                        <button type="submit" class="btn btn-primary">Publish Post</button>
+                        <button type="submit" class="btn btn-primary" data-submit-post>Publish Post</button>
+                        <button type="button" class="btn btn-secondary" data-cancel-edit hidden>Cancel Edit</button>
                         <button type="button" class="btn btn-secondary" data-logout>Sign Out</button>
                     </div>
                 </form>
@@ -403,6 +526,7 @@
     </footer>
     <script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-storage-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore-compat.js"></script>
     <script src="firebase-config.js"></script>
     <script src="firebase-blog.js"></script>
